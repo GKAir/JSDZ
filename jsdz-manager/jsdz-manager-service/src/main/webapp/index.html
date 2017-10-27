@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+ <head>
+       <title>注册页面</title>
+       <style type="text/css">
+           table
+           {
+               width: 450px;
+               border: 1px solid red;
+              background-color: #FFCB29;
+              border-collapse: collapse;
+          }
+          td
+          {
+              width: 200;
+              height: 40px;
+              border: 1px solid black;
+          }
+          span
+          {
+              background-color: red;
+         }
+      </style>
+  </head>
+  <body style="background-color: blue; background-image: url(../图片/bear.jpg); background-repeat: repeat;">
+      <form name="registerform" id="form1" action="" method="post">
+      <table align="center" cellspacing="0" cellpadding="0">
+          <tr>
+              <td>
+   用户名：  31             </td>
+             <td>
+                 <input type="text" />
+             </td>
+          </tr>
+          <tr>
+              <td>
+   密码：  39             </td>
+             <td>
+                 <input type="password" />
+             </td>
+         </tr>
+         <tr>
+             <td>
+   确认密码：  47             </td>
+             <td>
+                  <input type="password" />
+              </td>
+          </tr>
+          <tr>
+              <td>
+   请选择市：  55             </td>
+             <td>
+                  <select>
+                      <optgroup label="中国">
+                          <option>甘肃省</option>
+                          <option>河南省</option>
+                          <option>上海市</option>
+                      </optgroup>
+                      <optgroup label="American">
+                          <option>California</option>
+                          <option>Chicago</option>
+                          <option>New York</option>
+                      </optgroup>
+                 </select>
+              </td>
+          </tr>
+          <tr>
+              <td>
+   请选择性别：  74             </td>
+             <td>
+                 <input type="radio" name="sex" id="male" value="0" checked="checked" /><label for="male">男</lable>
+                      <input type="radio" name="sex" id="fmale" value="1" /><label for="fmale">女</label>
+                      <input type="radio" name="sex" id="secret" value="2" /><label for="secret">保密</label>
+              </td>
+          </tr>
+          <tr>
+              <td>
+   请选择职业：  84             </td>
+             <td>
+                 <input type="radio" id="student" name="profession" /><label for="student">学生</label>
+                 <input type="radio" id="teacher" name="profession" /><label for="teacher">教师</label>
+                  <input type="radio" id="others" name="profession" /><label for="others">其他</label>
+              </td>
+          </tr>
+          <tr>
+              <td>
+   请选择爱好：  94             </td>
+              <td>
+                  <fieldset>
+                      <legend>你的爱好</legend>
+                      <input type="checkbox" name="hobby" id="basketboll" checked="checked" /><label for="basketboll">打篮球</label>
+                      <input type="checkbox" name="hobby" id="run" /><label for="run">跑步</label>
+                     <input type="checkbox" name="hobby" id="read" /><label for="read">阅读</label>
+                     <input type="checkbox" name="hobby" id="surfing" /><label for="surfing">上网</label>
+                 </fieldset>
+             </td>
+         </tr>
+         <tr>
+             <td>
+  备注： 108             </td>
+             <td>
+                 <textarea cols="30">这里是备注内容</textarea>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 &nbsp;
+             </td>
+             <td>
+                 <input type="submit" value="提交" />
+                 <input type="reset" value="重置" />
+             </td>
+         </tr>
+     </table>
+     </form>
+ </body>
+</html>

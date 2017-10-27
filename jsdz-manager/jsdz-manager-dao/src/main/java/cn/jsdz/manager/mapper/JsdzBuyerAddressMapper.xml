@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jsdz.manager.mapper.JsdzBuyerAddressMapper" >
+  <resultMap id="BaseResultMap" type="cn.jsdz.manager.po.JsdzBuyerAddress" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
+    <result column="receive_province" property="receiveProvince" jdbcType="VARCHAR" />
+    <result column="receive_city" property="receiveCity" jdbcType="VARCHAR" />
+    <result column="receive_area" property="receiveArea" jdbcType="VARCHAR" />
+    <result column="receive_address" property="receiveAddress" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="is_default" property="isDefault" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, user_id, receive_name, receive_province, receive_city, receive_area, receive_address, 
+    telephone, phone, is_default
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.jsdz.manager.po.JsdzBuyerAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jsdz_buyer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jsdz_buyer_address
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jsdz_buyer_address
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.jsdz.manager.po.JsdzBuyerAddressExample" >
+    delete from jsdz_buyer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.jsdz.manager.po.JsdzBuyerAddress" >
+    insert into jsdz_buyer_address (Id, user_id, receive_name, 
+      receive_province, receive_city, receive_area, 
+      receive_address, telephone, phone, 
+      is_default)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{receiveName,jdbcType=VARCHAR}, 
+      #{receiveProvince,jdbcType=VARCHAR}, #{receiveCity,jdbcType=VARCHAR}, #{receiveArea,jdbcType=VARCHAR}, 
+      #{receiveAddress,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{isDefault,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jsdz.manager.po.JsdzBuyerAddress" >
+    insert into jsdz_buyer_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="receiveName != null" >
+        receive_name,
+      </if>
+      <if test="receiveProvince != null" >
+        receive_province,
+      </if>
+      <if test="receiveCity != null" >
+        receive_city,
+      </if>
+      <if test="receiveArea != null" >
+        receive_area,
+      </if>
+      <if test="receiveAddress != null" >
+        receive_address,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="isDefault != null" >
+        is_default,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveName != null" >
+        #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null" >
+        #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null" >
+        #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null" >
+        #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null" >
+        #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.jsdz.manager.po.JsdzBuyerAddressExample" resultType="java.lang.Integer" >
+    select count(*) from jsdz_buyer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jsdz_buyer_address
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.receiveName != null" >
+        receive_name = #{record.receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveProvince != null" >
+        receive_province = #{record.receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveCity != null" >
+        receive_city = #{record.receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveArea != null" >
+        receive_area = #{record.receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveAddress != null" >
+        receive_address = #{record.receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDefault != null" >
+        is_default = #{record.isDefault,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jsdz_buyer_address
+    set Id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      receive_name = #{record.receiveName,jdbcType=VARCHAR},
+      receive_province = #{record.receiveProvince,jdbcType=VARCHAR},
+      receive_city = #{record.receiveCity,jdbcType=VARCHAR},
+      receive_area = #{record.receiveArea,jdbcType=VARCHAR},
+      receive_address = #{record.receiveAddress,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      is_default = #{record.isDefault,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.jsdz.manager.po.JsdzBuyerAddress" >
+    update jsdz_buyer_address
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveName != null" >
+        receive_name = #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null" >
+        receive_province = #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null" >
+        receive_city = #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null" >
+        receive_area = #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null" >
+        receive_address = #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.jsdz.manager.po.JsdzBuyerAddress" >
+    update jsdz_buyer_address
+    set user_id = #{userId,jdbcType=BIGINT},
+      receive_name = #{receiveName,jdbcType=VARCHAR},
+      receive_province = #{receiveProvince,jdbcType=VARCHAR},
+      receive_city = #{receiveCity,jdbcType=VARCHAR},
+      receive_area = #{receiveArea,jdbcType=VARCHAR},
+      receive_address = #{receiveAddress,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
